@@ -19,7 +19,7 @@ import java.util.List;
 @RequestMapping("/api/mytable")
 public class TaskController {
     @Autowired
-    private TaskModel repository;
+    private TaskRepository repository;
 
     @GetMapping
     public List<TaskModel> getAll() {
@@ -29,5 +29,15 @@ public class TaskController {
     @PostMapping
     public TaskModel create(@RequestBody TaskModel myTask) {
         return repository.save(myTask);
+    }
+    @PostMapping("/mock-employees")
+    public void createMockEmployees() {
+        List<TaskModel> mockEmployees = List.of(
+                new TaskModel(null, "1", "John Doe"),
+                new TaskModel(null, "2", "Jane Smith"),
+                new TaskModel(null, "3", "Alice Johnson"),
+                new TaskModel(null, "4", "Bob Brown")
+        );
+        repository.saveAll(mockEmployees);
     }
 }
