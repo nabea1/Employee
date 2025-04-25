@@ -17,15 +17,21 @@ public class TaskModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String employeeId;
     private String employeeName;
 
-    public List<TaskModel> findAll() {
-        return null;
+    // Constructor
+    public TaskModel(Long id, String employeeId, String employeeName) {
+        this.id = id;
+        this.employeeId = employeeId;
+        this.employeeName = employeeName;
     }
 
-    public TaskModel save(TaskModel myTask) {
-        return null;
+    public TaskModel() {
+
     }
-    // Getters and setters
+
 }
+
+
 
